@@ -1,0 +1,12 @@
+services:
+  zabbix-agent:
+    image: zabbix/zabbix-agent:ubuntu-trunk
+    container_name: c_zabbix_agent_HOSTNAME
+    environment:
+      - ZBX_HOSTNAME="MACHINE_HOSTNAME"
+      - ZBX_SERVER_HOST="ZABBIX_SERVER_IP" 
+      - ZBX_ACTIVE_SERVERS="ZABBIX_SERVER_IP" 
+      - ZBX_LISTENPORT="MACHINE_PORT" # 10052 ?
+      - ZBX_SERVER="ZABBIX_SERVER_IP"  
+    network_mode: host
+    restart: unless-stopped
